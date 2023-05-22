@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Place Order</title>
+    <!-- Link to Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <!-- Link to your custom CSS file (if any) -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+      margin-bottom: 100px
+    }
+    .card {
+      border-radius: 0;
+    }
+    h2 {
+      font-size: 36px;
+      font-weight: bold;
+    }
+    p {
+      font-size: 18px;
+    }
+    .navbar-brand {
+      font-size: 30px;
+    }
+
+      .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      min-height: 10px;
+    }
+  </style>
+ <body>
+  <nav class="navbar" style="background-color: #6777be;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}" style="font-weight: bold; color: #ffffff;" >pizzabook</a>
+    </div>
+  </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center">Place Order</h2>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                {{ form.as_p }}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Place Order</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link to Bootstrap JS and jQuery (if needed) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  </body>
+  <!-- Footer -->
+  <footer class="footer">
+
+    <div class="text-center p-3" style="background-color: #8591c7">
+      © 2023 Pizzabook "Fastest Pizza in the World" Book your pizza now.
+    </div>
+  </footer>
+
+
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pizza Ordered</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous">
+    <style>
+
+    #bg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top;
+        background-attachment: fixedx;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+      .card {
+        border-radius: 0;
+      }
+      h1 {
+        font-size: 36px;
+        font-weight: bold;
+      }
+      p {
+        font-size: 18px;
+      }
+      .navbar-brand {
+        font-size: 30px;
+      }
+
+      .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      min-height: 10px;
+    }
+    </style>
+  </head>
+  <body id='bg' style="background-image:url('static/img/delivery.gif');">
+    <nav class="navbar" style="background-color: #6777be;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'index' %}" style="font-weight: bold; color: #ffffff;" >pizzabook</a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6 mx-auto mt-3">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="text-center mb-4">Your Order</h1>
+              <p>A {{ most_recent_pizza.size }} {{ most_recent_pizza.crust }} Crust Pizza with {{ most_recent_pizza.sauce }} Sauce and {{ most_recent_pizza.cheese }} Cheese</p>
+              <p>Toppings:</p>
+              <ul>
+                {% if most_recent_pizza.pepperoni %}<li>Pepperoni</li>{% endif %}
+                {% if most_recent_pizza.chicken %}<li>Chicken</li>{% endif %}
+                {% if most_recent_pizza.ham %}<li>Ham</li>{% endif %}
+                {% if most_recent_pizza.pineapple %}<li>Pineapple</li>{% endif %}
+                {% if most_recent_pizza.peppers %}<li>Peppers</li>{% endif %}
+                {% if most_recent_pizza.mushrooms %}<li>Mushrooms</li>{% endif %}
+                {% if most_recent_pizza.onions %}<li>Onions</li>{% endif %}
+              </ul>
+              <hr>
+              <h1 class="text-center mb-4">Delivery details</h1>
+              <p class="mb-0">Customer: {{ most_recent_del.name }}</p>
+              <p>Address: {{ most_recent_del.address }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer class="footer">
+    <div class="text-center p-3" style="background-color: #8591c7">
+      © 2023 Pizzabook "Fastest Pizza in the World"
+      <a class="text-dark" href="https://mdbootstrap.com/"> MDBootstrap.com</a>
+    </div>
+  </footer>
+</html>

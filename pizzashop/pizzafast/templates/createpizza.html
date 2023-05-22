@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Pizza</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+          background-color: #f8f9fa;
+        }
+        .container {
+          margin-top: 50px;
+          margin-bottom: 100px;
+        }
+        .card {
+          border-radius: 0;
+        }
+        h2 {
+          font-size: 36px;
+          font-weight: bold;
+        }
+        p {
+          font-size: 18px;
+        }
+        .navbar-brand {
+          font-size: 30px;
+        }
+
+        #bg {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top;
+        background-attachment: fixedx;
+      }
+      .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      min-height: 10px;
+    }
+
+      </style>
+</head>
+ <body>
+  <nav class="navbar" style="background-color: #6777be;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'index' %}" style="font-weight: bold; color: #ffffff;" >pizzabook</a>
+    </div>
+  </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto mt-5 border rounded p-3">
+                <h2 class="text-center mb-4">Build Your Own Pizza</h2>
+
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        {% for field in form %}
+                            <div class="form-check">
+                                {{ field }}
+                                <label class="form-check-label" for="{{ field.id_for_label }}">
+                                    {{ field.label }}
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block mt-4">Make Pizza</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+  <footer class="footer">
+
+    <div class="text-center p-3" style="background-color: #8591c7">
+      © 2023 Pizzabook "Fastest Pizza in the World" Book your pizza now.
+    </div>
+  </footer>
+
+</html>
